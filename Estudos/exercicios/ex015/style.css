@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/* ===========================
+   PALETA PARA SITE DE TECNOLOGIA (Dark Mode)
+   =========================== */
+
+body {
+  /* Fundo Escuro e Fonte Moderna */
+  background-color: #1E272C; /* Cinza Quase Preto */
+  font-family: 'Inter', sans-serif; /* Fonte moderna e clara */
+  font-size: 20px;
+  color: #F0F4F7; /* Texto Branco Suave */
+}
+
+/* Título principal - Azul Elétrico e Forte */
+h1 {
+  color: #2D9CDB; /* Azul Elétrico - Cor de Destaque */
+  font-weight: 800; /* Extra-Negrito para impacto */
+  text-transform: uppercase; /* Pode adicionar um toque agressivo e técnico */
+}
+
+/* Título de seção - Separado por uma linha de destaque */
+h2 {
+  color: #F0F4F7; 
+  background-color: transparent;
+  padding-bottom: 5px; 
+  margin-top: 30px;
+  border-bottom: 3px solid #2D9CDB; /* Linha de destaque azul */
+}
+
+/* Subtítulo - Cinza Claro para suavizar */
+h3 {
+  color: #A6B0B6;
+}
+
+/* Parágrafo - Legibilidade em Justify */
+p {
+  color: #D3DCE0; /* Cinza Gelo para o corpo do texto */
+  text-align: justify;
+  line-height: 1.7; /* Aumenta o espaçamento para leitura em fundo escuro */
+}

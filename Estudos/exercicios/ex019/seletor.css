@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+    --bg-deep: #05050A;
+    --text-main: #E0E6ED;
+    --text-muted: #94A3B8;
+    --ai-cyan: #00F0FF;
+    --ai-purple: #7000FF;
+    --gradient: linear-gradient(90deg, var(--ai-cyan), var(--ai-purple));
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem 10%; /* Margem lateral para não colar na borda */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* --- H1 PRINCIPAL (O Título do Site) --- */
+/* Seleciona apenas o primeiro h1 dentro do body */
+body > h1:first-of-type {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    
+    /* Efeito Gradiente Neon */
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 40px rgba(112, 0, 255, 0.4);
+}
+
+/* --- H1 SECUNDÁRIO (Títulos das Seções) --- */
+/* Seleciona todos os h1 que NÃO são o primeiro */
+body > h1:not(:first-of-type) {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    color: var(--ai-cyan); /* Cor sólida Ciano */
+    margin-top: 4rem;      /* Mais espaço antes de começar nova seção */
+    margin-bottom: 1.5rem;
+    
+    /* Design de "Bloco de Código" */
+    border-left: 5px solid var(--ai-purple);
+    padding-left: 15px;
+    background: linear-gradient(90deg, rgba(112,0,255,0.1), transparent);
+}
+
+/* --- H2 (Subtítulos) --- */
+h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+h2::before {
+    content: '// '; /* Decoração estilo código */
+    color: var(--text-muted);
+    margin-right: 8px;
+    font-family: monospace;
+}
+
+/* --- Parágrafos --- */
+p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}

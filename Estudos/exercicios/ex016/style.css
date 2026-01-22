@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+/* Estilos globais (Reset simples) */
+* {
+    /* Define o box-sizing para facilitar o layout */
+    box-sizing: border-box; 
+    /* Remove margens e preenchimentos padrão */
+    margin: 0;
+    padding: 0;
+    /* Define a fonte padrão como fallback */
+    font-family: Arial, sans-serif;
+}
+
+/* Fundo com o Degradê Suave */
+body {
+    /* Aplica o degradê do Cinza Claro (#EBEBEB) para o Verde Água Suave (#A3D9CC) */
+    background-image: linear-gradient(to bottom right, #EBEBEB, #A3D9CC);
+    /* Garante que o fundo cubra toda a altura da viewport */
+    min-height: 100vh;
+}
+
+/* Container Principal de Conteúdo */
+main {
+    /* Fundo levemente off-white para destacar o conteúdo do background */
+    background-color: #F8F8F8;
+    /* Centraliza e define uma largura máxima para o conteúdo */
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    /* Adiciona uma sombra sutil para profundidade */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Borda arredondada suave */
+    border-radius: 8px;
+}
+
+/* Parágrafos e Texto Secundário */
+p {
+    /* Cinza Médio para leitura suave */
+    color: #999999;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* Título Principal */
+h1 {
+    /* Cinza Escuro para alto contraste e legibilidade */
+    color: #333333;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #5B9B8E; /* Linha de destaque Verde Água */
+    padding-bottom: 5px;
+}
+
+/* Títulos Secundários */
+h2 {
+    /* Verde Água Profundo para um toque de destaque e energia */
+    color: #5B9B8E;
+    font-size: 1.8em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}

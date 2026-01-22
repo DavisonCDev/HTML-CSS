@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNARDES | É Tudo Mentira</title>
+    <style>
+        /* --- CONFIGURAÇÕES GERAIS E VARIÁVEIS --- */
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0f0f0f;
+            --text-color: #f0f0f0;
+            --text-dim: #666;
+            --accent-toxic: #ccff00; /* O "Amarelo/Verde" da banda */
+            --accent-error: #ff3333;
+            --font-display: 'Arial Black', sans-serif;
+            --font-body: 'Courier New', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- EFEITO DE RUÍDO (NOISE) NO FUNDO --- */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 900;
+            opacity: 0.05;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* --- TIPOGRAFIA & ANIMAÇÕES DE GLITCH --- */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem; /* Espaço adicionado */
+        }
+
+        /* ALTERAÇÃO: Título "É TUDO MENTIRA" diminuído */
+        .glitch {
+            font-size: 2.5rem; /* Reduzido de 6rem para 2.5rem */
+            position: relative;
+            color: var(--text-color);
+            line-height: 1;
+        }
+
+        .glitch-text {
+            position: relative;
+        }
+
+        .glitch::before, .glitch::after,
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+        }
+
+        .glitch::before, .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--accent-error);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        .glitch::after, .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--accent-toxic);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 30px, 0); transform: skew(0.5deg); }
+            20% { clip: rect(80px, 9999px, 100px, 0); transform: skew(0.1deg); }
+            40% { clip: rect(10px, 9999px, 50px, 0); transform: skew(0.8deg); }
+            60% { clip: rect(60px, 9999px, 80px, 0); transform: skew(0.2deg); }
+            80% { clip: rect(20px, 9999px, 40px, 0); transform: skew(0.6deg); }
+            100% { clip: rect(90px, 9999px, 120px, 0); transform: skew(0.4deg); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(60px, 9999px, 90px, 0); transform: skew(0.4deg); }
+            20% { clip: rect(10px, 9999px, 40px, 0); transform: skew(0.8deg); }
+            40% { clip: rect(40px, 9999px, 70px, 0); transform: skew(0.2deg); }
+            60% { clip: rect(80px, 9999px, 110px, 0); transform: skew(0.1deg); }
+            80% { clip: rect(30px, 9999px, 60px, 0); transform: skew(0.6deg); }
+            100% { clip: rect(10px, 9999px, 30px, 0); transform: skew(0.5deg); }
+        }
+
+        /* --- BARRA DE NAVEGAÇÃO --- */
+        nav {
+            padding: 1.5rem 5%; /* Ajuste de padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Centralizar verticalmente com o logo grande */
+            border-bottom: 1px solid #333;
+            position: relative;
+            z-index: 10;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        /* ALTERAÇÃO: Nome "LUNARDES" aumentado drasticamente */
+        .brand {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 4rem; /* Aumentado de 1.5rem para 4rem */
+            color: var(--accent-toxic);
+            letter-spacing: -3px; /* Letras mais juntas para impacto */
+            line-height: 1;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-toxic);
+            text-decoration: line-through;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh; /* Leve ajuste na altura */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            border-bottom: 1px solid #333;
+            position: relative;
+            z-index: 5;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-box {
+            margin-top: 2rem;
+            display: inline-block;
+            border: 2px solid var(--text-color);
+            padding: 1rem 2rem;
+            font-family: var(--font-display);
+            text-decoration: none;
+            color: var(--bg-color);
+            background: var(--accent-toxic);
+            font-size: 1.2rem;
+            transition: 0.2s;
+            max-width: 250px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .cta-box:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+            box-shadow: 5px 5px 0px var(--accent-toxic);
+            transform: translate(-2px, -2px);
+        }
+
+        /* --- SEÇÃO DE DADOS (SPOTIFY) --- */
+        .data-section {
+            padding: 4rem 10%;
+            background-color: #080808;
+            border-bottom: 1px solid #333;
+        }
+
+        .data-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .data-header h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            border-left: 5px solid var(--accent-toxic);
+            padding-left: 15px;
+        }
+
+        .live-indicator {
+            color: var(--accent-toxic);
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-toxic);
+            padding: 5px 10px;
+            letter-spacing: 2px;
+        }
+
+        .blink { animation: blinker 1.5s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .data-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .data-card:hover {
+            border-color: var(--accent-toxic);
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.1);
+        }
+
+        .data-card h3 {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Elementos Gráficos */
+        .big-number { font-size: 3rem; font-weight: bold; color: var(--text-color); }
+        .trend { font-size: 1rem; color: var(--accent-toxic); vertical-align: super; }
+        
+        .line-chart { width: 100%; height: 100%; filter: drop-shadow(0 0 5px var(--accent-toxic)); }
+        
+        .bar-row { margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; }
+        .label { width: 120px; text-align: right; color: #aaa; text-transform: uppercase; }
+        .bar-track { flex-grow: 1; height: 8px; background: #222; }
+        .bar-fill { height: 100%; background: var(--accent-toxic); position: relative; }
+        
+        .bar-fill::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 2px, #000 2px, #000 4px);
+            opacity: 0.2;
+        }
+
+        .city-list { list-style: none; }
+        .city-list li { margin-bottom: 0.8rem; display: flex; flex-direction: column; }
+        .city-name { margin-bottom: 5px; color: #ddd; font-size: 0.9rem; }
+        .city-bar { height: 4px; background: #444; position: relative; }
+        .city-bar::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 100%; background: var(--accent-toxic); opacity: 0.6; }
+
+        /* --- SINGLE EM DESTAQUE --- */
+        .latest-release {
+            padding: 5rem 10%;
+            background: #0a0a0a;
+        }
+
+        .track-display {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .album-art-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #111;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .toxic-symbol {
+            font-size: 5rem;
+            color: var(--accent-toxic);
+            filter: drop-shadow(0 0 10px var(--accent-toxic));
+        }
+
+        .lyrics-snippet {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: #888;
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-toxic);
+        }
+
+        /* --- MODAL DE VÍDEO --- */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.2);
+            border: 2px solid var(--accent-toxic);
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-family: var(--font-display);
+        }
+        
+        .close-modal:hover { color: var(--accent-toxic); }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 3rem 10%;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background: #050505;
+        }
+
+        .social-links a {
+            display: block;
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links a:hover { color: var(--accent-toxic); }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            /* Ajustes para mobile */
+            .brand { font-size: 3rem; }
+            .glitch { font-size: 2rem; }
+            
+            .track-display { grid-template-columns: 1fr; }
+            nav { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+            .nav-links { width: 100%; display: flex; justify-content: space-between; flex-wrap: wrap; }
+            .nav-links a { margin: 0; }
+            .modal-content { width: 95%; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+
+    <div id="videoModal" class="video-modal" onclick="closeVideo()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeVideo()">&times; FECHAR</span>
+            <iframe id="youtubeFrame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <nav>
+        <div class="brand">LUNARDES</div>
+        <div class="nav-links">
+            <a href="#">Música</a>
+            <a href="#">Vídeos</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="subtitle">ROCK ALTERNATIVO // OSASCO-SP</div>
+        <div class="glitch-wrapper">
+            <h1 class="glitch" data-text="É TUDO MENTIRA">É TUDO MENTIRA</h1>
+        </div>
+        <p style="max-width: 600px; color: #aaa; font-size: 1.1rem;">
+            Escorre o veneno. A realidade distorcida do rock independente.
+            Sonzera direta, sem filtro e necessária.
+        </p>
+        <button class="cta-box" onclick="openVideo()">OUVIR AGORA</button>
+    </header>
+
+    <section class="data-section">
+        <div class="data-header">
+            <h2 class="glitch-text" data-text="DADOS_DE_STREAMING">DADOS_DE_STREAMING</h2>
+            <div class="live-indicator">
+                <span class="blink">●</span> ATUALIZANDO_EM_TEMPO_REAL
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="data-card">
+                <h3>OUVINTES MENSAIS</h3>
+                <div class="big-number">1,240 <span class="trend">▲ +12%</span></div>
+                <div style="width: 100%; height: 80px; margin-top: 1rem;">
+                    <svg viewBox="0 0 300 100" class="line-chart">
+                        <polyline fill="none" stroke="#ccff00" stroke-width="3" 
+                                  points="0,80 50,60 100,70 150,40 200,50 250,20 300,30" />
+                        <polygon fill="rgba(204, 255, 0, 0.1)" stroke="none" 
+                                 points="0,80 50,60 100,70 150,40 200,50 250,20 300,30 300,100 0,100" />
+                    </svg>
+                </div>
+                <p style="font-size: 0.7rem; color: #444; margin-top: 10px; text-align: right;">ÚLTIMOS 28 DIAS</p>
+            </div>
+
+            <div class="data-card">
+                <h3>FAIXAS MAIS TOCADAS</h3>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <span class="label">É TUDO MENTIRA</span>
+                        <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="label">COMETA</span>
+                        <div class="bar-track"><div class="bar-fill" style="width: 65%;"></div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="label">UM CARA</span>
+                        <div class="bar-track"><div class="bar-fill" style="width: 45%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-card">
+                <h3>TOP CIDADES</h3>
+                <ul class="city-list">
+                    <li>
+                        <span class="city-name">1. OSASCO, BR</span>
+                        <span class="city-bar" style="width: 90px;"></span>
+                    </li>
+                    <li>
+                        <span class="city-name">2. SÃO PAULO, BR</span>
+                        <span class="city-bar" style="width: 70px;"></span>
+                    </li>
+                    <li>
+                        <span class="city-name">3. CARAPICUÍBA, BR</span>
+                        <span class="city-bar" style="width: 40px;"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="latest-release">
+        <div class="track-display">
+            <div class="album-art-placeholder">
+                <div class="toxic-symbol">⚠️</div>
+                <div style="position: absolute; bottom: 10px; right: 10px; font-size: 0.8rem; color: #444;">SINGLE 2024</div>
+            </div>
+            <div class="info">
+                <h2 style="color: var(--accent-toxic); margin-bottom: 1rem;">DESTAQUE</h2>
+                <h3 style="font-size: 2.5rem; margin-bottom: 1rem;">O MUNDO VAI GIRANDO</h3>
+                <p>
+                    Uma crítica ácida à superficialidade moderna. Guitarras marcantes, 
+                    vocal visceral e uma atmosfera que transita entre o desânimo urbano e a explosão de energia.
+                </p>
+                <div class="lyrics-snippet">
+                    "Eu vejo as pessoas se perdendo por pouca escolha...<br>
+                    É tudo mentira, escorre o veneno e tanto faz."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact">
+            <h3>LUNARDES</h3>
+            <p style="color: #444; margin-top: 10px;">© 2025 // INDEPENDENTE</p>
+        </div>
+        <div class="social-links">
+            <a href="#">INSTAGRAM</a>
+            <a href="#">SPOTIFY</a>
+            <a href="#">YOUTUBE</a>
+        </div>
+    </footer>
+
+    <script>
+        // SCRIPT DO PLAYER DE VÍDEO
+        const videoID = "SZjHfUmdx1o"; // ID do vídeo da Lunardes
+
+        function openVideo() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('youtubeFrame');
+            iframe.src = `https://www.youtube.com/embed/${videoID}?autoplay=1&theme=dark`;
+            modal.style.display = 'flex';
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('youtubeFrame');
+            iframe.src = "";
+            modal.style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeVideo();
+            }
+        });
+    </script>
+</body>
+</html>
