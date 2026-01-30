@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudos de Iframe</title>
+    <style>
+        /* CSS Básico para ajudar na visualização */
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc; /* Substitui o frameborder="0" */
+        }
+    </style>
 </head>
 <body>
     <h1>Testando o uso de Iframe</h1>
+
+    <p>Acessando o site do <a href="https://www.cursoemvideo.com/" target="_blank">Cursoemvideo</a> para aprender a programar.</p>
     
+    <p>Tentativa de carregar o site externo (pode ser bloqueado pelo servidor deles):</p>
+    <iframe src="https://www.cursoemvideo.com/">
+        <p>Seu navegador não é compatível com iframes.</p>
+    </iframe>
+
+    <hr>
+
+    <h2>O site da Lunardes</h2>
+    <p>Abaixo o site carregado via Iframe:</p>
+    
+    <iframe src="https://davisoncdev.github.io/lunardes">
+        <p>Seu navegador não suporta iframes. Acesse o <a href="https://davisoncdev.github.io/lunardes">link direto aqui</a>.</p>
+    </iframe>
+
+    <p>Ou acesse o <a href="https://davisoncdev.github.io/lunardes" target="_blank">Site Oficial da Lunardes</a> diretamente.</p>
 </body>
 </html>
