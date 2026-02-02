@@ -3,35 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudos de Iframe</title>
+    <title>Menu com Iframe</title>
     <style>
-        /* CSS Básico para ajudar na visualização */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Estilo dos botões/links */
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        /* Estilo do Iframe */
         iframe {
-            width: 100%;
-            height: 300px;
-            border: 1px solid #ccc; /* Substitui o frameborder="0" */
+            width: 80%;
+            height: 400px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
-    <h1>Testando o uso de Iframe</h1>
 
-    <p>Acessando o site do <a href="https://www.cursoemvideo.com/" target="_blank">Cursoemvideo</a> para aprender a programar.</p>
-    
-    <p>Tentativa de carregar o site externo (pode ser bloqueado pelo servidor deles):</p>
-    <iframe src="https://www.cursoemvideo.com/">
-        <p>Seu navegador não é compatível com iframes.</p>
+    <h2>Selecione uma página</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur accusamus nisi voluptas dolorum ex ipsum eius magni dicta aperiam laborum, nulla asperiores animi, possimus veniam debitis earum itaque tempora autem.</p>
+
+    <nav>
+        <a href="pagina1.html" target="visualizador">Primeira Página</a>
+        <a href="pagina2.html" target="visualizador">Segunda Página</a>
+        <a href="pagina3.html" target="visualizador">Terceira Página</a>
+    </nav>
+
+    <iframe id="tela"name="frame" srcdoc="<h1>Escolha uma das opções acima</h1>">
+        <p>Infelizmente seu navegador não é compatível com isso.</p>
     </iframe>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, omnis alias delectus quibusdam necessitatibus quos debitis maiores libero eveniet optio similique voluptates, expedita error! Accusantium numquam in labore amet minima.
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, obcaecati! Animi, autem cumque? Tempore id excepturi magni dolor cumque, cum earum obcaecati perspiciatis doloremque pariatur eligendi placeat sequi at quibusdam!</p>
 
-    <hr>
-
-    <h2>O site da Lunardes</h2>
-    <p>Abaixo o site carregado via Iframe:</p>
-    
-    <iframe src="https://davisoncdev.github.io/lunardes">
-        <p>Seu navegador não suporta iframes. Acesse o <a href="https://davisoncdev.github.io/lunardes">link direto aqui</a>.</p>
-    </iframe>
-
-    <p>Ou acesse o <a href="https://davisoncdev.github.io/lunardes" target="_blank">Site Oficial da Lunardes</a> diretamente.</p>
 </body>
 </html>
