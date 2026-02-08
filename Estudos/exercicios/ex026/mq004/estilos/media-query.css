@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+/*Todas as demais midias*/
+
+/*Typical Device Breakpoints
+--------------------------
+Pequenas telas até: 360px
+Celular de 360px até 414px;
+Tablet de 768px até 1023px ;
+Desktop de 1024px até 1200px;
+Grandes telas acima de 1200px ;
+*/
+
+/*Impressoras*/
+@media print {
+    *{
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+  body {
+    background-image: url(../imagens/backgroundprinter.jpg); /*desnecessário*/
+  }
+
+  main{
+    width: 90vw;
+    border: solid black;
+  }
+
+  main h1{
+    text-shadow: none;
+    color: black;
+  }
+
+  main::after{
+    content: "Essa impressão foi feita através do site www.cursoemvideo.com";
+    text-decoration: overline;
+  }
+
+  img#imobile {
+    display: none;
+  }
+
+  img#itablet {
+    display: none;
+  }
+
+  img#iprinter {
+    display: block;
+  }
+
+  img#icomputer {
+    display: none;
+  }
+
+  img#itelevision {
+    display: none;
+  }
+}
+
+/*Tablets*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    background-image: url(../imagens/backgroundtablet.jpg);
+  }
+
+  img#imobile {
+    display: none;
+  }
+
+  img#itablet {
+    display: block;
+  }
+
+  img#iprinter {
+    display: none;
+  }
+
+  img#icomputer {
+    display: none;
+  }
+
+  img#itelevision {
+    display: none;
+  }
+}
+
+/*Desktops*/
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+  body {
+    background-image: url(../imagens/backgroundpc.jpg);
+  }
+
+  img#imobile {
+    display: none;
+  }
+
+  img#itablet {
+    display: none;
+  }
+
+  img#iprinter {
+    display: none;
+  }
+
+  img#icomputer {
+    display: block;
+  }
+
+  img#itelevision {
+    display: none;
+  }
+}
+
+/*Telas Grandes*/
+@media screen and (min-width: 1201px) {
+  body {
+    background-image: url(../imagens/backgroundtv.jpg);
+  }
+
+  img#imobile {
+    display: none;
+  }
+
+  img#itablet {
+    display: none;
+  }
+
+  img#iprinter {
+    display: none;
+  }
+
+  img#icomputer {
+    display: none;
+  }
+
+  img#itelevision {
+    display: block;
+  }
+}
