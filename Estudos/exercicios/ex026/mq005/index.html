@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resposividade Media Queries</title>
+    <title>Responsividade Media Queries</title>
+
+    <!-- Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/media-query.css">
 </head>
-<body>
+
+<body onresize="mudouTamanho()">
     <header>
         <h1>Meu Site</h1>
-            <span class="material-symbols-outlined" id="burguer" onclick="clickMenu()">
-                menu
-            </span>
+
+        <span class="material-symbols-outlined" id="burguer" onclick="clickMenu()">
+            menu
+        </span>
+
         <menu id="itens">
             <ul>
                 <li><a href="#">Opção 01</a></li>
@@ -23,30 +31,33 @@
             </ul>
         </menu>        
     </header>
+
     <main>
         <article>
             <h2>Testando Media Queries</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque inventore iusto omnis aliquid ut sunt minima error doloribus, rerum deleniti, fugit natus eveniet perferendis qui totam ratione voluptatum accusantium accusamus.
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero non vel a, earum labore dolor omnis asperiores exercitationem sapiente modi dolores sunt quasi eum, qui doloribus nulla cumque, magni rem!
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem rerum atque nemo amet, repudiandae quia officia. Soluta aperiam sequi eius laborum. Eum fugiat quis delectus architecto repellat quaerat, nisi fuga.</p>
 
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quos impedit quam animi repellat doloremque nobis sed similique, libero reiciendis, esse enim quis voluptatibus ab ratione ipsa autem. Optio, fuga.</p>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus impedit corrupti laborum aspernatur cum quam eaque, necessitatibus alias voluptas pariatur, autem rem molestiae tenetur maiores nobis error similique. Illo, voluptates.</p>
-
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem repudiandae dolorem illum magnam modi eius, labore perspiciatis ab, aperiam illo officiis nam delectus molestias nobis nihil maxime incidunt earum laboriosam.</p>
-
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque inventore iusto omnis aliquid ut sunt minima error doloribus, rerum deleniti, fugit natus eveniet perferendis qui totam ratione voluptatum accusantium accusamus.
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero non vel a, earum labore dolor omnis asperiores exercitationem sapiente modi dolores sunt quasi eum, qui doloribus nulla cumque, magni rem!
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem rerum atque nemo amet, repudiandae quia officia. Soluta aperiam sequi eius laborum. Eum fugiat quis delectus architecto repellat quaerat, nisi fuga.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque distinctio est, voluptates voluptatibus aperiam commodi provident voluptatem, quidem vero tempore facere quos vel unde quam perferendis facilis inventore veritatis sunt?</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus maxime, blanditiis iure ullam velit corrupti soluta non autem consectetur earum, hic et sit deleniti deserunt inventore veritatis? Nisi, dolore quidem!</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum perspiciatis placeat illo quidem consequatur asperiores animi quae quam suscipit omnis optio minima minus odit ad, fugiat saepe. Eum, maiores alias.</p>
         </article>
     </main>
+
     <script>
+        const itens = document.getElementById('itens')
+
         function clickMenu(){
-            if (itens.style.display == 'block'){
-                itens.style.display='none'
-            }else{
-                itens.style.display='block'
+            if (itens.style.display === 'block'){
+                itens.style.display = 'none'
+            } else {
+                itens.style.display = 'block'
+            }
+        }
+
+        function mudouTamanho(){
+            if (window.innerWidth >= 768){
+                itens.style.display = 'block'
+            } else {
+                itens.style.display = 'none'
             }
         }
     </script>
