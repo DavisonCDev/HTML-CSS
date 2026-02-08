@@ -1,1 +1,8 @@
-@charset= "UTF-8";
+@charset "UTF-8";
+
+/*Configuracoes modo paisagem (landscape)*/
+
+body{
+    background-image: url(../imagens/landscape.jpeg);
+    background-position: left bottom;
+}

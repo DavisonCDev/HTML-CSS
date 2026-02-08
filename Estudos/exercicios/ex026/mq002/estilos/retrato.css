@@ -1,1 +1,8 @@
-@charset= "UTF-8";
+@charset "UTF-8";
+
+/*Configuracoes modo retrato (portrait)*/
+
+body{
+    background-image: url(../imagens/portraint.jpg);
+    background-position: center bottom;
+}
