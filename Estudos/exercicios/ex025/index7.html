@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulários</title>
+</head>
+<body>
+
+    <h1>Exemplo de Formulário</h1>
+
+    <form action="cadastro.php" method="get" autocomplete="on">
+
+        <p>
+            <label for="iest">Estado</label>
+            <select name="estado" id="iest" required>
+                <option value="">Selecione um estado</option>
+
+                <option value="AC">AC - Acre</option>
+                <option value="AL">AL - Alagoas</option>
+                <option value="AP">AP - Amapá</option>
+                <option value="AM">AM - Amazonas</option>
+                <option value="BA">BA - Bahia</option>
+                <option value="CE">CE - Ceará</option>
+                <option value="DF">DF - Distrito Federal</option>
+                <option value="ES">ES - Espírito Santo</option>
+                <option value="GO">GO - Goiás</option>
+                <option value="MA">MA - Maranhão</option>
+                <option value="MT">MT - Mato Grosso</option>
+                <option value="MS">MS - Mato Grosso do Sul</option>
+                <option value="MG">MG - Minas Gerais</option>
+                <option value="PA">PA - Pará</option>
+                <option value="PB">PB - Paraíba</option>
+                <option value="PR">PR - Paraná</option>
+                <option value="PE">PE - Pernambuco</option>
+                <option value="PI">PI - Piauí</option>
+                <option value="RJ">RJ - Rio de Janeiro</option>
+                <option value="RN">RN - Rio Grande do Norte</option>
+                <option value="RS">RS - Rio Grande do Sul</option>
+                <option value="RO">RO - Rondônia</option>
+                <option value="RR">RR - Roraima</option>
+                <option value="SC">SC - Santa Catarina</option>
+                <option value="SP">SP - São Paulo</option>
+                <option value="SE">SE - Sergipe</option>
+                <option value="TO">TO - Tocantins</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="iprof">Profissão</label>
+            <input 
+                type="text" 
+                name="prof" 
+                id="iprof" 
+                list="lista-profissoes"
+                placeholder="Digite ou selecione"
+            >
+
+            <datalist id="lista-profissoes">
+                <option value="Administrador">
+                <option value="Advogado">
+                <option value="Analista de Sistemas">
+                <option value="Arquiteto">
+                <option value="Contador">
+                <option value="Desenvolvedor de Software">
+                <option value="Designer Gráfico">
+                <option value="Eletricista">
+                <option value="Engenheiro Civil">
+                <option value="Engenheiro de Software">
+                <option value="Mecânico">
+                <option value="Médico">
+                <option value="Professor">
+                <option value="Programador">
+                <option value="Técnico em Automação">
+                <option value="Técnico em Informática">
+                <option value="Vendedor">
+            </datalist>
+        </p>
+        <p>
+            <label for="imsg">Mensagem</label>
+            <textarea name="msg" id="imsg" cols="30" rows="10"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="ENVIAR">
+            <input type="reset" value="LIMPAR">
+        </p>
+
+    </form>
+
+</body>
+</html>
