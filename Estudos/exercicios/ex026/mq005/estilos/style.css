@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/* Reset básico */
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html{
+    background-color: lightgrey;
+}
+
+/* ===== HEADER ===== */
+
+header{
+    background-color: rgb(156, 156, 156);
+}
+
+header > h1{
+    padding: 10px;
+    text-align: center;
+}
+
+/* ===== HAMBURGUER ===== */
+
+span#burguer{
+    display: block;
+    background-color: black;      /* fundo preto */
+    width: 100vw;
+    color: white;                 /* ícone branco */
+    text-align: center;           /* centralizado */
+    padding: 12px;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+span#burguer:hover{
+    background-color: white;
+    color: black;
+}
+
+/* ===== MENU ===== */
+
+menu{
+    display: none;                /* fechado no mobile */
+}
+
+menu > ul {
+    list-style-type: none;
+}
+
+/* opções com faixas separadoras */
+menu > ul > li > a{
+    display: block;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(82, 82, 82);
+    color: white;
+    border-top: 2px solid gray;   /* faixas de separação */
+}
+
+menu > ul > li:last-child > a{
+    border-bottom: 2px solid gray; /* faixa final */
+}
+
+menu > ul > li > a:hover{
+    background-color: gray;
+}
+
+/* ===== CONTEÚDO ===== */
+
+main{
+    width: 90vw;
+    background-color: white;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+article > h2{
+    padding-bottom: 20px;
+}
+
+article > p{
+    text-align: justify;
+    margin-bottom: 20px;
+    text-indent: 20px;
+}
+
+/* ===== DESKTOP ===== */
+
+@media screen and (min-width: 768px){
+
+    i#burguer{
+        display: none;             /* some no desktop */
+    }
+
+    menu{
+        display: block;            /* menu visível */
+    }
+
+    menu > ul > li > a{
+        border-top: 2px solid gray;   /* mantém as faixas */
+    }
+}
